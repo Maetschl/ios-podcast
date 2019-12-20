@@ -39,7 +39,6 @@ class PodcastInteractorTests: XCTestCase {
         XCTAssertTrue(presenter.presentLoadingCalled)
         XCTAssertTrue(presenter.removeLoadingCalled)
         XCTAssertTrue(worker.fetchPodcastCalled)
-        
     }
 
 }
