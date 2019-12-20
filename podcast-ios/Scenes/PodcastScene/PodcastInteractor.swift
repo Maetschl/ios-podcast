@@ -12,10 +12,18 @@ protocol PodcastBussinessLogic {
     func getPodcastList()
 }
 
-class PodcastInteractor: PodcastBussinessLogic {
+protocol PodcastDataStore {
+    var channel: Channel? { get set }
+}
+
+class PodcastInteractor: PodcastBussinessLogic, PodcastDataStore {
     
+    // MARK: - PodcastBussinessLogic
     var presenter: PodcastPresentationLogic?
     var worker: PodcastWorkerLogic?
+    
+    // MARK: - PodcastDataStore
+    var channel: Channel?
     
     init() {
         worker = PodcastWorker()
@@ -24,7 +32,9 @@ class PodcastInteractor: PodcastBussinessLogic {
     // MARK: - PodcastBussinessLogic
     func getPodcastList() {
         presenter?.presentLoading()
-        worker?.fetchPodcast { [unowned self] podcast in
+        worker?.fetchPodcast { [unowned self] channel in
+            // Store the data from worker for uses
+            self.channel = channel
             self.presenter?.removeLoading()
             self.presenter?.removeLoading()
         }

@@ -48,7 +48,7 @@ class PodcastViewController: UIViewController, PodcastDisplayLogic, UITableViewD
 
     override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
         if toInterfaceOrientation == .portrait ||
-            toInterfaceOrientation == .portraitUpsideDown {
+           toInterfaceOrientation == .portraitUpsideDown {
             stackView.axis = .vertical
         } else {
             stackView.axis = .horizontal

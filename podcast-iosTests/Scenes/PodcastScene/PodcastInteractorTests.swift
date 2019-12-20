@@ -30,7 +30,7 @@ class PodcastInteractorTests: XCTestCase {
         sut = nil
         super.setUp()
     }
-
+    
     func testOnGetPodcastListCallWorkerAndAddLoadingAndRemoveLoading() {
         // Given
         // When
@@ -39,6 +39,14 @@ class PodcastInteractorTests: XCTestCase {
         XCTAssertTrue(presenter.presentLoadingCalled)
         XCTAssertTrue(presenter.removeLoadingCalled)
         XCTAssertTrue(worker.fetchPodcastCalled)
+    }
+    
+    func testOnGetPodcastListCallWorkerAndStoreData() {
+        // Given
+        // When
+        sut?.getPodcastList()
+        // Then
+        XCTAssertNotNil(sut?.channel)
     }
 
 }
