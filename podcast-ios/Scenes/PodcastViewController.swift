@@ -13,10 +13,13 @@ protocol PodcastDisplayLogic {
     func hideLoading()
 }
 
-class PodcastViewController: UIViewController, PodcastDisplayLogic {
+class PodcastViewController: UIViewController, PodcastDisplayLogic, UITableViewDelegate {
 
     var interactor: PodcastBussinessLogic?
 
+    @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var stackView: UIStackView!
     // MARK: - Object lifecycle
 
     required init?(coder: NSCoder) {
@@ -39,9 +42,19 @@ class PodcastViewController: UIViewController, PodcastDisplayLogic {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
         interactor?.getPodcastList()
     }
-    
+
+    override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
+        if toInterfaceOrientation == .portrait ||
+            toInterfaceOrientation == .portraitUpsideDown {
+            stackView.axis = .vertical
+        } else {
+            stackView.axis = .horizontal
+        }
+    }
+
     // MARK: - PodcastDisplayLogic
     
     func showLoading() {
@@ -51,5 +64,7 @@ class PodcastViewController: UIViewController, PodcastDisplayLogic {
     func hideLoading() {
         // Hide lottie
     }
+        
+    // MARK: - UITableViewDelegate
 
 }
