@@ -36,7 +36,8 @@ class PodcastInteractor: PodcastBussinessLogic, PodcastDataStore {
             // Store the data from worker for uses
             self.channel = channel
             self.presenter?.removeLoading()
-            self.presenter?.removeLoading()
+            let response = PodcastScene.Fetch.Response(items: channel.items)
+            self.presenter?.presentList(response: response)
         }
     }
 }

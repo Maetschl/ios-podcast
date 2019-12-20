@@ -11,11 +11,13 @@ import UIKit
 protocol PodcastDisplayLogic {
     func showLoading()
     func hideLoading()
+    func showItems(viewModel: PodcastScene.Fetch.ViewModel)
 }
 
-class PodcastViewController: UIViewController, PodcastDisplayLogic, UITableViewDelegate {
+class PodcastViewController: UIViewController, PodcastDisplayLogic, UITableViewDelegate, UITableViewDataSource {
 
     var interactor: PodcastBussinessLogic?
+    var items: [Item] = []
 
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var tableView: UITableView!
@@ -43,6 +45,7 @@ class PodcastViewController: UIViewController, PodcastDisplayLogic, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
+        tableView.dataSource = self
         interactor?.getPodcastList()
     }
 
@@ -64,7 +67,28 @@ class PodcastViewController: UIViewController, PodcastDisplayLogic, UITableViewD
     func hideLoading() {
         // Hide lottie
     }
+    
+    func showItems(viewModel: PodcastScene.Fetch.ViewModel) {
+        DispatchQueue.main.async {
+            self.items = viewModel.items
+            self.tableView.reloadData()
+        }
+    }
         
     // MARK: - UITableViewDelegate
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return items.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        cell.textLabel?.text = items[indexPath.row].title
+        return cell
+    }
 
 }

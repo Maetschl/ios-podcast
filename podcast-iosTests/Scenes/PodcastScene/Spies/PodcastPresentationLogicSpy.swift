@@ -21,5 +21,13 @@ class PodcastPresentationLogicSpy: PodcastPresentationLogic {
     func removeLoading() {
         removeLoadingCalled = true
     }
+    
+    var presentListCalled = false
+    var presentListResponse: PodcastScene.Fetch.Response?
+
+    func presentList(response: PodcastScene.Fetch.Response) {
+        presentListCalled = true
+        presentListResponse = response
+    }
 
 }

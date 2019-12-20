@@ -41,12 +41,15 @@ class PodcastInteractorTests: XCTestCase {
         XCTAssertTrue(worker.fetchPodcastCalled)
     }
     
-    func testOnGetPodcastListCallWorkerAndStoreData() {
+    func testOnGetPodcastListCallWorkerAndStoreDataAndPropagueForPresenter() {
         // Given
         // When
         sut?.getPodcastList()
         // Then
         XCTAssertNotNil(sut?.channel)
+        XCTAssertTrue(presenter?.presentListCalled ?? false)
+        XCTAssertNotNil(presenter?.presentListResponse)
+        XCTAssertEqual(presenter?.presentListResponse?.items.count, 2)
     }
 
 }

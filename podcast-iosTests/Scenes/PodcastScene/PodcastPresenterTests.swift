@@ -12,10 +12,15 @@ import XCTest
 class PodcastPresenterTests: XCTestCase {
 
     var sut: PodcastPresenter?
+    var viewController: PodcastDisplayLogicSpy!
 
     override func setUp() {
         super.setUp()
         sut = PodcastPresenter()
+        
+        viewController = PodcastDisplayLogicSpy()
+        sut?.viewController = viewController
+        
     }
 
     override func tearDown() {
@@ -23,7 +28,14 @@ class PodcastPresenterTests: XCTestCase {
         super.tearDown()
     }
 
-    func testExample() {
+    func testPresentItems() {
+        // Given
+        let items = [Item(title: "Test", guid: "Test string")]
+        let response = PodcastScene.Fetch.Response(items: items)
+        // When
+        sut?.presentList(response: response)
+        // Then
+        XCTAssertTrue(self.viewController.showItemsCalled)
     }
 
 }

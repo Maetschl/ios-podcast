@@ -11,6 +11,7 @@ import Foundation
 protocol PodcastPresentationLogic {
     func presentLoading()
     func removeLoading()
+    func presentList(response: PodcastScene.Fetch.Response)
 }
 
 class PodcastPresenter: PodcastPresentationLogic {
@@ -23,6 +24,11 @@ class PodcastPresenter: PodcastPresentationLogic {
     
     func removeLoading() {
         viewController?.hideLoading()
+    }
+    
+    func presentList(response: PodcastScene.Fetch.Response) {
+        let viewModel = PodcastScene.Fetch.ViewModel(items: response.items)
+        self.viewController?.showItems(viewModel: viewModel)
     }
 
 }
