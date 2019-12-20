@@ -9,11 +9,15 @@
 import Foundation
 
 protocol PodcastBussinessLogic {
-
+    func getPodcastList()
 }
 
 class PodcastInteractor: PodcastBussinessLogic {
     
-    var presenter: PodcastDisplayLogic?
+    var presenter: PodcastPresentationLogic?
 
+    // MARK: - PodcastBussinessLogic
+    func getPodcastList() {
+        presenter?.presentLoading()
+    }
 }

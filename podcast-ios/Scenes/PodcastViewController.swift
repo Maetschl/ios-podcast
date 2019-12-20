@@ -9,7 +9,7 @@
 import UIKit
 
 protocol PodcastDisplayLogic {
-    
+    func showLoading()
 }
 
 class PodcastViewController: UIViewController, PodcastDisplayLogic {
@@ -38,6 +38,13 @@ class PodcastViewController: UIViewController, PodcastDisplayLogic {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        interactor?.getPodcastList()
+    }
+    
+    // MARK: - PodcastDisplayLogic
+    
+    func showLoading() {
+        // Show lottie for loading
     }
 
 }

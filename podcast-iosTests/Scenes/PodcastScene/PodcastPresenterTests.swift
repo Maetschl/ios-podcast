@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import podcast_ios
 
 class PodcastPresenterTests: XCTestCase {
 

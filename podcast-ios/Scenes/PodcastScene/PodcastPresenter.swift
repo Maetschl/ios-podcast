@@ -9,10 +9,15 @@
 import Foundation
 
 protocol PodcastPresentationLogic {
-
+    func presentLoading()
 }
 
-class PodcastPresenter: PodcastDisplayLogic {
+class PodcastPresenter: PodcastPresentationLogic {
 
     var viewController: PodcastDisplayLogic?
+    
+    func presentLoading(){
+        viewController?.showLoading()
+    }
+
 }
