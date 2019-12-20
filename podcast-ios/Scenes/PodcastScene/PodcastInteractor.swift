@@ -11,6 +11,7 @@ import AVFoundation
 protocol PodcastBussinessLogic {
     func getPodcastList()
     func playMusic()
+    func selectItem(request: PodcastScene.Play.Request)
 }
 
 protocol PodcastDataStore {
@@ -66,5 +67,10 @@ class PodcastInteractor: PodcastBussinessLogic, PodcastDataStore {
                 print(error)
             }
         }
+    }
+    
+    func selectItem(request: PodcastScene.Play.Request) {
+        selectedItemIndex = request.index
+        playMusic()
     }
 }

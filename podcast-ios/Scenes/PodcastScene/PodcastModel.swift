@@ -17,4 +17,9 @@ enum PodcastScene {
             let items: [Item]
         }
     }
+    enum Play {
+        struct Request {
+            let index: Int
+        }
+    }
 }

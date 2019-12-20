@@ -95,5 +95,9 @@ class PodcastViewController: UIViewController, PodcastDisplayLogic, UITableViewD
         cell.textLabel?.text = items[indexPath.row].title
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        interactor?.selectItem(request: PodcastScene.Play.Request(index: indexPath.row))
+    }
 
 }
