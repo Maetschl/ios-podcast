@@ -20,9 +20,26 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qYX-7n-RKp">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
-                                        <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WrO-3u-Ed9">
+                                                <rect key="frame" x="167" y="314.5" width="80" height="79"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="80" id="ZSk-q8-6qy"/>
+                                                    <constraint firstAttribute="height" constant="80" id="heB-z9-1pk"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                                <color key="tintColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" backgroundImage="play.circle.fill" catalog="system"/>
+                                                <connections>
+                                                    <action selector="tapOnPlayButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hkQ-mP-QeC"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="qYX-7n-RKp" secondAttribute="height" multiplier="1:1" id="JhQ-tf-ODZ"/>
+                                            <constraint firstAttribute="bottom" secondItem="WrO-3u-Ed9" secondAttribute="bottom" constant="20" id="ahs-kS-ccU"/>
+                                            <constraint firstItem="WrO-3u-Ed9" firstAttribute="centerX" secondItem="qYX-7n-RKp" secondAttribute="centerX" id="b5o-Mu-jbQ"/>
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="747-lc-ikn">
@@ -49,7 +66,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="236" y="123"/>
+            <point key="canvasLocation" x="234.78260869565219" y="122.54464285714285"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="play.circle.fill" catalog="system" width="64" height="60"/>
+    </resources>
 </document>

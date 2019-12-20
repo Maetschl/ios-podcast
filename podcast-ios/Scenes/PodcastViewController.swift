@@ -74,7 +74,12 @@ class PodcastViewController: UIViewController, PodcastDisplayLogic, UITableViewD
             self.tableView.reloadData()
         }
     }
-        
+    
+    // MARK: - View Actions
+    @IBAction func tapOnPlayButton(_ sender: Any) {
+        interactor?.playMusic()
+    }
+
     // MARK: - UITableViewDelegate
     
     func numberOfSections(in tableView: UITableView) -> Int {

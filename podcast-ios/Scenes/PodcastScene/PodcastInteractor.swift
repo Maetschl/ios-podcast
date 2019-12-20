@@ -6,14 +6,16 @@
 //  Copyright © 2019 Julian Arias Maetschl. All rights reserved.
 //
 
-import Foundation
+import AVFoundation
 
 protocol PodcastBussinessLogic {
     func getPodcastList()
+    func playMusic()
 }
 
 protocol PodcastDataStore {
     var channel: Channel? { get set }
+    var selectedItemIndex: Int? { get set }
 }
 
 class PodcastInteractor: PodcastBussinessLogic, PodcastDataStore {
@@ -22,8 +24,11 @@ class PodcastInteractor: PodcastBussinessLogic, PodcastDataStore {
     var presenter: PodcastPresentationLogic?
     var worker: PodcastWorkerLogic?
     
+    var player = AVPlayer()
+    
     // MARK: - PodcastDataStore
     var channel: Channel?
+    var selectedItemIndex: Int? = 0
     
     init() {
         worker = PodcastWorker()
@@ -38,6 +43,28 @@ class PodcastInteractor: PodcastBussinessLogic, PodcastDataStore {
             self.presenter?.removeLoading()
             let response = PodcastScene.Fetch.Response(items: channel.items)
             self.presenter?.presentList(response: response)
+        }
+    }
+    
+    func playMusic() {
+        if let selectedItemIndex = selectedItemIndex, let channel = channel {
+            let urlString = channel.items[selectedItemIndex].guid
+            guard let url = URL.init(string: urlString) else { return }
+            let playerItem = AVPlayerItem.init(url: url)
+            player = AVPlayer.init(playerItem: playerItem)
+            do {
+                try AVAudioSession.sharedInstance()
+                    .setCategory(
+                        AVAudioSession.Category.playback,
+                        mode: AVAudioSession.Mode.default,
+                        options: [.allowAirPlay]
+                )
+                try AVAudioSession.sharedInstance()
+                    .setActive(true)
+                player.play()
+            } catch {
+                print(error)
+            }
         }
     }
 }
