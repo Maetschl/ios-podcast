@@ -8,7 +8,33 @@
 
 import UIKit
 
-class PodcastController: UIViewController {
+protocol PodcastDisplayLogic {
+    
+}
+
+class PodcastViewController: UIViewController, PodcastDisplayLogic {
+
+    var interactor: PodcastBussinessLogic?
+
+    // MARK: - Object lifecycle
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setup()
+    }
+
+    // MARK: - Architecture Setup
+
+    private func setup() {
+        let viewController = self
+        let interactor = PodcastInteractor()
+        let presenter = PodcastPresenter()
+        viewController.interactor = interactor
+        interactor.presenter = presenter
+        presenter.viewController = viewController
+    }
+
+    // MARK: - View controller lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
