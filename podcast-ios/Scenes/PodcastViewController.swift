@@ -10,6 +10,7 @@ import UIKit
 
 protocol PodcastDisplayLogic {
     func showLoading()
+    func hideLoading()
 }
 
 class PodcastViewController: UIViewController, PodcastDisplayLogic {
@@ -45,6 +46,10 @@ class PodcastViewController: UIViewController, PodcastDisplayLogic {
     
     func showLoading() {
         // Show lottie for loading
+    }
+    
+    func hideLoading() {
+        // Hide lottie
     }
 
 }

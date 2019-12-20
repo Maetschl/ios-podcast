@@ -15,9 +15,18 @@ protocol PodcastBussinessLogic {
 class PodcastInteractor: PodcastBussinessLogic {
     
     var presenter: PodcastPresentationLogic?
+    var worker: PodcastWorkerLogic?
+    
+    init() {
+        worker = PodcastWorker()
+    }
 
     // MARK: - PodcastBussinessLogic
     func getPodcastList() {
         presenter?.presentLoading()
+        worker?.fetchPodcast { [unowned self] podcast in
+            self.presenter?.removeLoading()
+            self.presenter?.removeLoading()
+        }
     }
 }

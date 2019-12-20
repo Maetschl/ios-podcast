@@ -23,6 +23,10 @@
 		67332A4E23AD21EC00E5BE07 /* PodcastPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67332A4D23AD21EC00E5BE07 /* PodcastPresenterTests.swift */; };
 		67332A5023AD220400E5BE07 /* PodcastViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67332A4F23AD220400E5BE07 /* PodcastViewControllerTests.swift */; };
 		67332A5F23AD37FB00E5BE07 /* PodcastBussinessLogicSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67332A5E23AD37FB00E5BE07 /* PodcastBussinessLogicSpy.swift */; };
+		67332A6123AD38D600E5BE07 /* PodcastWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67332A6023AD38D600E5BE07 /* PodcastWorker.swift */; };
+		67332A6323AD393600E5BE07 /* PodcastModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67332A6223AD393600E5BE07 /* PodcastModels.swift */; };
+		67332A6523AD3B0A00E5BE07 /* PodcastPresentationLogicSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67332A6423AD3B0A00E5BE07 /* PodcastPresentationLogicSpy.swift */; };
+		67332A6723AD3B3E00E5BE07 /* PodcastWorkerLogicSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67332A6623AD3B3E00E5BE07 /* PodcastWorkerLogicSpy.swift */; };
 		9AF3C0B08985AB1C75BD2FF1 /* Pods_podcast_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCF919DADAE683C8041B643B /* Pods_podcast_ios.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +71,10 @@
 		67332A4D23AD21EC00E5BE07 /* PodcastPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastPresenterTests.swift; sourceTree = "<group>"; };
 		67332A4F23AD220400E5BE07 /* PodcastViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastViewControllerTests.swift; sourceTree = "<group>"; };
 		67332A5E23AD37FB00E5BE07 /* PodcastBussinessLogicSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastBussinessLogicSpy.swift; sourceTree = "<group>"; };
+		67332A6023AD38D600E5BE07 /* PodcastWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastWorker.swift; sourceTree = "<group>"; };
+		67332A6223AD393600E5BE07 /* PodcastModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastModels.swift; sourceTree = "<group>"; };
+		67332A6423AD3B0A00E5BE07 /* PodcastPresentationLogicSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastPresentationLogicSpy.swift; sourceTree = "<group>"; };
+		67332A6623AD3B3E00E5BE07 /* PodcastWorkerLogicSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastWorkerLogicSpy.swift; sourceTree = "<group>"; };
 		8BBF3614D8115C7D1DB6A8AB /* Pods_podcast_iosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_podcast_iosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC78CB0974B9145645357662 /* Pods-podcast-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-podcast-ios.release.xcconfig"; path = "Target Support Files/Pods-podcast-ios/Pods-podcast-ios.release.xcconfig"; sourceTree = "<group>"; };
 		BCF919DADAE683C8041B643B /* Pods_podcast_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_podcast_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -180,6 +188,8 @@
 				67332A4623AD1FDC00E5BE07 /* PodcastPresenter.swift */,
 				67332A0F23AD14C000E5BE07 /* PodcastViewController.swift */,
 				67332A3E23AD1A1D00E5BE07 /* Main.storyboard */,
+				67332A6023AD38D600E5BE07 /* PodcastWorker.swift */,
+				67332A6223AD393600E5BE07 /* PodcastModels.swift */,
 			);
 			path = PodcastScene;
 			sourceTree = "<group>";
@@ -207,6 +217,8 @@
 			isa = PBXGroup;
 			children = (
 				67332A5E23AD37FB00E5BE07 /* PodcastBussinessLogicSpy.swift */,
+				67332A6423AD3B0A00E5BE07 /* PodcastPresentationLogicSpy.swift */,
+				67332A6623AD3B3E00E5BE07 /* PodcastWorkerLogicSpy.swift */,
 			);
 			path = Spies;
 			sourceTree = "<group>";
@@ -473,10 +485,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67332A6323AD393600E5BE07 /* PodcastModels.swift in Sources */,
 				67332A4723AD1FDC00E5BE07 /* PodcastPresenter.swift in Sources */,
 				67332A1023AD14C000E5BE07 /* PodcastViewController.swift in Sources */,
 				67332A0C23AD14C000E5BE07 /* AppDelegate.swift in Sources */,
 				67332A0E23AD14C000E5BE07 /* SceneDelegate.swift in Sources */,
+				67332A6123AD38D600E5BE07 /* PodcastWorker.swift in Sources */,
 				67332A4523AD1EBE00E5BE07 /* PodcastInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -488,7 +502,9 @@
 				67332A4E23AD21EC00E5BE07 /* PodcastPresenterTests.swift in Sources */,
 				67332A5F23AD37FB00E5BE07 /* PodcastBussinessLogicSpy.swift in Sources */,
 				67332A2323AD14C100E5BE07 /* podcast_iosTests.swift in Sources */,
+				67332A6723AD3B3E00E5BE07 /* PodcastWorkerLogicSpy.swift in Sources */,
 				67332A5023AD220400E5BE07 /* PodcastViewControllerTests.swift in Sources */,
+				67332A6523AD3B0A00E5BE07 /* PodcastPresentationLogicSpy.swift in Sources */,
 				67332A4B23AD21CB00E5BE07 /* PodcastInteractorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

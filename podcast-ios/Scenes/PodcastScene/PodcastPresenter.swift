@@ -10,6 +10,7 @@ import Foundation
 
 protocol PodcastPresentationLogic {
     func presentLoading()
+    func removeLoading()
 }
 
 class PodcastPresenter: PodcastPresentationLogic {
@@ -18,6 +19,10 @@ class PodcastPresenter: PodcastPresentationLogic {
     
     func presentLoading(){
         viewController?.showLoading()
+    }
+    
+    func removeLoading() {
+        viewController?.hideLoading()
     }
 
 }

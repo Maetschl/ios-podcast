@@ -11,11 +11,19 @@ import XCTest
 
 class PodcastInteractorTests: XCTestCase {
     
-    var sut: PodcastInteractor?
+    var sut: PodcastInteractor!
+    var presenter: PodcastPresentationLogicSpy!
+    var worker: PodcastWorkerLogicSpy!
 
     override func setUp() {
         super.setUp()
         sut = PodcastInteractor()
+        
+        presenter = PodcastPresentationLogicSpy()
+        sut.presenter = presenter
+        
+        worker = PodcastWorkerLogicSpy()
+        sut.worker = worker
     }
 
     override func tearDown() {
@@ -23,7 +31,15 @@ class PodcastInteractorTests: XCTestCase {
         super.setUp()
     }
 
-    func testExample() {
+    func testOnGetPodcastListCallWorkerAndAddLoadingAndRemoveLoading() {
+        // Given
+        // When
+        sut?.getPodcastList()
+        // Then
+        XCTAssertTrue(presenter.presentLoadingCalled)
+        XCTAssertTrue(presenter.removeLoadingCalled)
+        XCTAssertTrue(worker.fetchPodcastCalled)
+        
     }
 
 }
