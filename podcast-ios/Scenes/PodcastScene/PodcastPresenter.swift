@@ -12,6 +12,8 @@ protocol PodcastPresentationLogic {
     func presentLoading()
     func removeLoading()
     func presentList(response: PodcastScene.Fetch.Response)
+    func presentPlaying()
+    func presentPause()
 }
 
 class PodcastPresenter: PodcastPresentationLogic {
@@ -29,6 +31,14 @@ class PodcastPresenter: PodcastPresentationLogic {
     func presentList(response: PodcastScene.Fetch.Response) {
         let viewModel = PodcastScene.Fetch.ViewModel(items: response.items)
         self.viewController?.showItems(viewModel: viewModel)
+    }
+    
+    func presentPlaying() {
+        viewController?.showPlaying()
+    }
+    
+    func presentPause() {
+        viewController?.showPause()
     }
 
 }

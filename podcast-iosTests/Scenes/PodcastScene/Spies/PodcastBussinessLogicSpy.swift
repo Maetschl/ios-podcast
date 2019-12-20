@@ -9,10 +9,22 @@
 @testable import podcast_ios
 
 class PodcastBussinessLogicSpy: PodcastBussinessLogic {
-
+    
     var getPodcastListCalled = false
 
     func getPodcastList() {
         getPodcastListCalled = true
+    }
+    
+    var playOrPauseMusicCalled = false
+
+    func playOrPauseMusic() {
+        playOrPauseMusicCalled = true
+    }
+    
+    var selectItemCalled = false
+
+    func selectItem(request: PodcastScene.Play.Request) {
+        selectItemCalled = true
     }
 }

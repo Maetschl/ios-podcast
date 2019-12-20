@@ -30,4 +30,16 @@ class PodcastPresentationLogicSpy: PodcastPresentationLogic {
         presentListResponse = response
     }
 
+    var presentPlayingCalled = false
+
+    func presentPlaying() {
+        presentPlayingCalled = true
+    }
+    
+    var presentPauseCalled = false
+
+    func presentPause() {
+        presentPauseCalled = true
+    }
+
 }

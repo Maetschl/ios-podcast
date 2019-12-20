@@ -34,12 +34,22 @@
                                                     <action selector="tapOnPlayButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hkQ-mP-QeC"/>
                                                 </connections>
                                             </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hx0-ef-qQv">
+                                                <rect key="frame" x="0.0" y="53.5" width="414" height="207"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="Hx0-ef-qQv" secondAttribute="height" multiplier="2:1" id="VdJ-QW-hOg"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
+                                            <constraint firstItem="Hx0-ef-qQv" firstAttribute="leading" secondItem="qYX-7n-RKp" secondAttribute="leading" id="Bk3-zh-Hli"/>
                                             <constraint firstAttribute="width" secondItem="qYX-7n-RKp" secondAttribute="height" multiplier="1:1" id="JhQ-tf-ODZ"/>
+                                            <constraint firstAttribute="trailing" secondItem="Hx0-ef-qQv" secondAttribute="trailing" id="Om5-br-k7v"/>
                                             <constraint firstAttribute="bottom" secondItem="WrO-3u-Ed9" secondAttribute="bottom" constant="20" id="ahs-kS-ccU"/>
                                             <constraint firstItem="WrO-3u-Ed9" firstAttribute="centerX" secondItem="qYX-7n-RKp" secondAttribute="centerX" id="b5o-Mu-jbQ"/>
+                                            <constraint firstItem="Hx0-ef-qQv" firstAttribute="centerY" secondItem="qYX-7n-RKp" secondAttribute="centerY" constant="-50" id="i7o-D9-jnb"/>
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="747-lc-ikn">
@@ -59,9 +69,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="playButton" destination="WrO-3u-Ed9" id="Dm0-qN-HXl"/>
                         <outlet property="stackView" destination="CpH-LX-qTH" id="UYJ-9F-gXR"/>
                         <outlet property="tableView" destination="747-lc-ikn" id="c6x-BB-kTD"/>
                         <outlet property="topView" destination="qYX-7n-RKp" id="Iqd-fi-945"/>
+                        <outlet property="waveView" destination="Hx0-ef-qQv" id="QlW-5r-3pn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

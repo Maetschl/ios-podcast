@@ -9,7 +9,7 @@
 @testable import podcast_ios
 
 class PodcastDisplayLogicSpy: PodcastDisplayLogic {
-    
+
     var showLoadingCalled = false
 
     func showLoading() {
@@ -30,5 +30,16 @@ class PodcastDisplayLogicSpy: PodcastDisplayLogic {
         showItemsCalled = true
     }
     
+    var showPlayingCalled = false
+
+    func showPlaying() {
+        showPlayingCalled = true
+    }
+    
+    var showPauseCalled = false
+
+    func showPause() {
+        showPauseCalled = true
+    }
     
 }

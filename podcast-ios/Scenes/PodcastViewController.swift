@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import Lottie
 
 protocol PodcastDisplayLogic {
     func showLoading()
     func hideLoading()
     func showItems(viewModel: PodcastScene.Fetch.ViewModel)
+    func showPlaying()
+    func showPause()
 }
 
 class PodcastViewController: UIViewController, PodcastDisplayLogic, UITableViewDelegate, UITableViewDataSource {
@@ -19,9 +22,12 @@ class PodcastViewController: UIViewController, PodcastDisplayLogic, UITableViewD
     var interactor: PodcastBussinessLogic?
     var items: [Item] = []
 
+    @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var waveView: UIView!
+    var animationView: AnimationView?
     // MARK: - Object lifecycle
 
     required init?(coder: NSCoder) {
@@ -47,6 +53,13 @@ class PodcastViewController: UIViewController, PodcastDisplayLogic, UITableViewD
         tableView.delegate = self
         tableView.dataSource = self
         interactor?.getPodcastList()
+        let animation = Animation.named("wave")
+        animationView = AnimationView(animation: animation)
+        animationView?.contentMode = .scaleToFill
+        if let animationView = animationView {
+            waveView.addSubview(animationView)
+        }
+        animationView?.stop()
     }
 
     override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
@@ -75,9 +88,23 @@ class PodcastViewController: UIViewController, PodcastDisplayLogic, UITableViewD
         }
     }
     
+    func showPlaying() {
+        let image = UIImage(systemName: "pause.circle.fill")
+        playButton.setBackgroundImage(image, for: .normal)
+        animationView?.play()
+        animationView?.loopMode = .loop
+    }
+    
+    func showPause() {
+        let image = UIImage(systemName: "play.circle.fill")
+        playButton.setBackgroundImage(image, for: .normal)
+        animationView?.pause()
+        animationView?.currentFrame = 0
+    }
+    
     // MARK: - View Actions
     @IBAction func tapOnPlayButton(_ sender: Any) {
-        interactor?.playMusic()
+        interactor?.playOrPauseMusic()
     }
 
     // MARK: - UITableViewDelegate
